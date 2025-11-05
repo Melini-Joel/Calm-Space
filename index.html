@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>💙 CalmSpace - Tu espacio de bienestar</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Hero Section -->
+    <div class="hero" id="inicio">
+        <div class="breathing-circle"></div>
+        <div class="hero-content">
+            <h1>💙 Calm-Space 💙</h1>
+            <p>"A veces el mejor avance es una pausa"</p>
+            <button class="btn" onclick="scrollToSection('porque')">Empezar a relajarte</button>
+        </div>
+    </div>
+
+    <!-- ¿Por qué necesito descansar? -->
+    <section class="section-white" id="porque">
+        <div class="content-container">
+            <h2 class="section-title">¿Por qué necesito descansar?</h2>
+            <p style="text-align: center; font-size: 1.2em; color: #666; margin-bottom: 40px;">
+                El estrés y el exceso de pantallas afectan tu ánimo, concentración y sueño. 
+                Reconocer las señales es el primer paso para cuidarte mejor.
+            </p>
+            <div class="reasons-grid">
+                <div class="reason-card">
+                    <div class="reason-icon">😴</div>
+                    <h3>Falta de descanso</h3>
+                    <p>El cansancio mental afecta tu energía, memoria y estado de ánimo. Dormir bien es fundamental.</p>
+                </div>
+                <div class="reason-card">
+                    <div class="reason-icon">📱</div>
+                    <h3>Demasiado conectado</h3>
+                    <p>Las pantallas constantes generan ansiedad y dificultan la concentración. Es importante desconectar.</p>
+                </div>
+                <div class="reason-card">
+                    <div class="reason-icon">📚</div>
+                    <h3>Presión escolar</h3>
+                    <p>El estrés académico puede ser agobiante. Tomar pausas mejora tu rendimiento y bienestar.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tips para sentirte mejor -->
+    <section class="section-light" id="tips">
+        <div class="content-container">
+            <h2 class="section-title">Tips para sentirte mejor</h2>
+            <div class="tips-container">
+                <div class="reason-card">
+                    <h3>📵 Desconexión digital</h3>
+                    <p>Tomá un descanso de 15 minutos sin celular. Tu mente lo agradecerá.</p>
+                </div>
+                <div class="reason-card">
+                    <h3>🎵 Música relajante</h3>
+                    <p>Escuchá sonidos suaves o tu música favorita para calmar la mente.</p>
+                </div>
+                <div class="reason-card">
+                    <h3>🚶 Salir a caminar</h3>
+                    <p>Una caminata corta al aire libre puede cambiar tu día completamente.</p>
+                </div>
+                
+                <div class="reason-card card">
+                    <h3>🧘 Respiración profunda</h3>
+                    <p>Respirá hondo por 3 minutos. Inhalá, retené, exhalá lentamente.</p>
+                </div>
+                <div class="reason-card card">
+                    <h3>🎧 Meditación guiada</h3>
+                    <p>Dedicá 5 minutos a una meditación guiada. Concentrate en el presente y dejá ir las preocupaciones.</p>
+                </div>
+            </div>
+
+            <div class="random-tip-section">
+                <button class="btn" onclick="generateRandomTip()">✨ Generar tip aleatorio</button>
+                <div class="random-tip-box" id="randomTip">
+                    <p class="random-tip-text">Hacé click para descubrir un consejo</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tu espacio zen -->
+    <section class="zen-space" id="zen">
+        <div class="content-container">
+            <h2 class="section-title" style="color: white;">Tu espacio zen</h2>
+            <p class="zen-quote">"Respirá hondo. Todo pasa."</p>
+            <p style="font-size: 1.2em; margin-bottom: 40px;">
+                Elegí un sonido relajante y tomá un momento para vos
+            </p>
+            <div class="sound-buttons">
+                <button class="sound-btn" onclick="toggleSound('lluvia')">🌧️ Lluvia</button>
+                <button class="sound-btn" onclick="toggleSound('olas')">🌊 Olas del mar</button>
+                <button class="sound-btn" onclick="toggleSound('bosque')">🌲 Bosque</button>
+                <button class="sound-btn" onclick="toggleSound('parar')">⏸️ Detener</button>
+            </div>
+            <p style="margin-top: 30px; font-style: italic; opacity: 0.8;">
+                (Simulación de sonidos - En una versión real se reproducirían audios reales)
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer: Cuidar tu mente también es salud -->
+    <footer class="footer">
+        <h2>Cuidar tu mente también es salud</h2>
+        <p>
+            El bienestar mental es tan importante como el físico. Tomarte un momento para pausar, 
+            reflexionar y cuidar tus emociones no es un lujo, es una necesidad. 
+            Recordá que pedir ayuda está bien y que siempre hay personas dispuestas a escucharte.
+            <br><br>
+            <strong>Calm-Space</strong> es tu espacio para reconectar con vos mismo. Volvé cuando lo necesites.
+        </p>
+    </footer>
+    <script src="js/script.js"></script>
+</body>
+</html>
