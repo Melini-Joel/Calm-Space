@@ -23,7 +23,7 @@ body {
 .hero-overlay {
     position: absolute;
     inset: 0;
-    background: radial-gradient(circle at top, rgba(255,255,255,0.15), transparent 55%);
+    background: radial-gradient(circle at top, rgba(255, 255, 255, 0.15), transparent 55%);
     opacity: 0.9;
     pointer-events: none;
 }
@@ -33,7 +33,7 @@ body {
     width: 340px;
     height: 340px;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(255,255,255,0.25), transparent 60%);
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.25), transparent 60%);
     animation: breathe 5s ease-in-out infinite;
     filter: blur(2px);
 }
@@ -428,10 +428,13 @@ html {
 
 /* Animación círculo */
 @keyframes breathe {
-    0%, 100% {
+
+    0%,
+    100% {
         transform: scale(1);
         opacity: 0.3;
     }
+
     50% {
         transform: scale(1.35);
         opacity: 0.7;
@@ -462,176 +465,236 @@ html {
 /* ===== Test de estrés (wizard) con estilo Calm-Space ===== */
 
 .test-container {
-  max-width: 760px;
+    max-width: 760px;
 }
 
 /* Tarjeta principal del test */
 .stress-card {
-  background: #ffffff;
-  border-radius: 22px;
-  padding: 24px 22px;
-  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.10);
-  margin: 0 auto;
-  border: 1px solid rgba(148, 163, 184, 0.20);
+    background: #ffffff;
+    border-radius: 22px;
+    padding: 24px 22px;
+    box-shadow: 0 16px 40px rgba(15, 23, 42, 0.10);
+    margin: 0 auto;
+    border: 1px solid rgba(148, 163, 184, 0.20);
 }
 
 /* Progreso superior */
 .stress-progress {
-  margin-bottom: 18px;
+    margin-bottom: 18px;
 }
 
 .stress-progress span {
-  font-size: 0.8rem;
-  text-transform: uppercase;
-  letter-spacing: 0.16em;
-  color: #818cf8;
-  font-weight: 700;
-  display: block;
-  margin-bottom: 6px;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: #818cf8;
+    font-weight: 700;
+    display: block;
+    margin-bottom: 6px;
 }
 
 .stress-bar {
-  width: 100%;
-  height: 6px;
-  border-radius: 999px;
-  background: #e5e7eb;
-  overflow: hidden;
+    width: 100%;
+    height: 6px;
+    border-radius: 999px;
+    background: #e5e7eb;
+    overflow: hidden;
 }
 
 .stress-bar-fill {
-  height: 100%;
-  width: 0;
-  border-radius: inherit;
-  background: linear-gradient(90deg, #6366f1, #a855f7);
-  transition: width 0.25s ease;
+    height: 100%;
+    width: 0;
+    border-radius: inherit;
+    background: linear-gradient(90deg, #6366f1, #a855f7);
+    transition: width 0.25s ease;
 }
 
 /* Pregunta actual */
 .stress-question-box {
-  margin: 12px 0 20px;
+    margin: 12px 0 20px;
 }
 
 .stress-question-text {
-  font-size: 1.05rem;
-  font-weight: 600;
-  color: #111827;
-  margin-bottom: 14px;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: #111827;
+    margin-bottom: 14px;
 }
 
 /* Opciones (mismo vibe que botones suaves de la página) */
 #stressOptions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px 14px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 14px;
 }
 
 #stressOptions label {
-  background: #f9fafb;
-  border-radius: 999px;
-  padding: 7px 14px;
-  border: 1px solid #e5e7eb;
-  font-size: 0.9rem;
-  color: #4b5563;
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  transition: all 0.15s ease;
+    background: #f9fafb;
+    border-radius: 999px;
+    padding: 7px 14px;
+    border: 1px solid #e5e7eb;
+    font-size: 0.9rem;
+    color: #4b5563;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.15s ease;
 }
 
 #stressOptions input[type="radio"] {
-  accent-color: #667eea;
+    accent-color: #667eea;
 }
 
 #stressOptions label:hover {
-  background: #eef2ff;
-  border-color: #667eea;
-  color: #3730a3;
+    background: #eef2ff;
+    border-color: #667eea;
+    color: #3730a3;
 }
 
 /* Navegación (botones ya usan .btn-cta / .btn-outline-cta de tu estilo) */
 .stress-nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 12px;
-  margin-top: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin-top: 8px;
 }
 
 /* Resultado final */
 .stress-result {
-  margin-top: 24px;
-  padding: 24px 22px;
-  border-radius: 22px;
-  background: linear-gradient(135deg, #eef2ff 0%, #e0f2fe 100%);
-  max-width: 760px;
-  margin-left: auto;
-  margin-right: auto;
-  box-shadow: 0 12px 32px rgba(15, 23, 42, 0.12);
-  border: 1px solid rgba(129, 140, 248, 0.40);
+    margin-top: 24px;
+    padding: 24px 22px;
+    border-radius: 22px;
+    background: linear-gradient(135deg, #eef2ff 0%, #e0f2fe 100%);
+    max-width: 760px;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0 12px 32px rgba(15, 23, 42, 0.12);
+    border: 1px solid rgba(129, 140, 248, 0.40);
 }
 
 .stress-result .result-title {
-  font-size: 1.25rem;
-  margin-bottom: 4px;
-  color: #111827;
+    font-size: 1.25rem;
+    margin-bottom: 4px;
+    color: #111827;
 }
 
 .stress-result .result-score {
-  font-weight: 600;
-  color: #4f46e5;
-  margin-bottom: 6px;
-  font-size: 0.95rem;
+    font-weight: 600;
+    color: #4f46e5;
+    margin-bottom: 6px;
+    font-size: 0.95rem;
 }
 
 .stress-result .result-text {
-  font-size: 0.95rem;
-  color: #4b5563;
-  margin-bottom: 10px;
+    font-size: 0.95rem;
+    color: #4b5563;
+    margin-bottom: 10px;
 }
 
 .stress-result .result-note {
-  font-size: 0.85rem;
-  color: #6b7280;
-  margin-top: 10px;
+    font-size: 0.85rem;
+    color: #6b7280;
+    margin-top: 10px;
 }
 
 /* Tarjetas de consejos personalizados */
 .stress-tips {
-  margin-top: 8px;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 12px;
+    margin-top: 8px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 12px;
 }
 
 .stress-tip-card {
-  background: #ffffff;
-  border-radius: 16px;
-  padding: 12px 14px;
-  box-shadow: 0 10px 26px rgba(15, 23, 42, 0.10);
-  border: 1px solid rgba(209, 213, 219, 0.7);
-  text-align: left;
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 12px 14px;
+    box-shadow: 0 10px 26px rgba(15, 23, 42, 0.10);
+    border: 1px solid rgba(209, 213, 219, 0.7);
+    text-align: left;
 }
 
 .stress-tip-card h4 {
-  font-size: 0.95rem;
-  color: #4f46e5;
-  margin-bottom: 4px;
+    font-size: 0.95rem;
+    color: #4f46e5;
+    margin-bottom: 4px;
 }
 
 .stress-tip-card p {
-  font-size: 0.88rem;
-  color: #4b5563;
-  margin: 0;
+    font-size: 0.88rem;
+    color: #4b5563;
+    margin: 0;
 }
 
 /* Responsive */
 @media (max-width: 768px) {
-  .stress-card {
-    padding: 20px 16px;
-  }
-  #stressOptions {
+    .stress-card {
+        padding: 20px 16px;
+    }
+
+    #stressOptions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+}
+
+/* Botón hamburguesa */
+.nav-toggle {
+    display: none;
     flex-direction: column;
-    align-items: stretch;
-  }
+    justify-content: center;
+    gap: 4px;
+    width: 32px;
+    height: 32px;
+    border-radius: 999px;
+    border: 1px solid rgba(148, 163, 184, 0.6);
+    background: #ffffff;
+    cursor: pointer;
+    padding: 4px;
+}
+
+.nav-toggle span {
+    display: block;
+    height: 2px;
+    width: 16px;
+    border-radius: 999px;
+    background: #475569;
+}
+
+/* Slide menú en mobile */
+@media (max-width: 768px) {
+    .nav-inner {
+        padding: 10px 14px;
+    }
+
+    .nav-toggle {
+        display: flex;
+    }
+
+    .header-sticky nav {
+        position: fixed;
+        top: 56px;
+        /* altura aproximada de la barra */
+        right: 0;
+        width: 220px;
+        background: rgba(248, 250, 252, 0.98);
+        box-shadow: -4px 0 18px rgba(15, 23, 42, 0.15);
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 12px 16px;
+        gap: 10px;
+        transform: translateX(100%);
+        opacity: 0;
+        pointer-events: none;
+        transition: transform 0.25s ease, opacity 0.25s ease;
+        border-radius: 16px 0 0 16px;
+    }
+
+    .header-sticky nav.open {
+        transform: translateX(0);
+        opacity: 1;
+        pointer-events: auto;
+    }
 }

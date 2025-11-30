@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,6 +17,7 @@
 
     <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
     <!-- Hero -->
     <section class="hero d-flex flex-column justify-content-center align-items-center text-center" id="inicio">
@@ -39,7 +41,16 @@
                 <img src="img/logo.png" alt="Logo Calm-Space" class="logo-nav">
                 <span class="brand-name">Calm-Space</span>
             </div>
-            <nav>
+
+            <!-- Botón hamburguesa (solo se ve en mobile) -->
+            <button class="nav-toggle" type="button" aria-label="Abrir menú" onclick="toggleNav()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <!-- Menú normal / slide -->
+            <nav id="mainNav">
                 <a href="#inicio">Inicio</a>
                 <a href="#porque">¿Por qué?</a>
                 <a href="#tips">Tips</a>
@@ -47,6 +58,7 @@
                 <a href="#test">Test de estrés</a>
             </nav>
         </div>
+
     </header>
 
     <!-- ¿Por qué necesito descansar? -->
@@ -159,52 +171,55 @@
     </section>
 
     <!-- Test (placeholder simple) -->
-   <section class="section-white" id="test">
-  <div class="content-container test-container">
-    <div class="section-header text-center mb-4">
-      <span class="section-kicker">Autoevaluación</span>
-      <h2 class="section-title">Test de estrés</h2>
-      <p class="section-subtitle">
-        No es un diagnóstico, solo una guía para que puedas mirar cómo venís y sumar hábitos que te hagan bien.
-      </p>
-    </div>
+    <section class="section-white" id="test">
+        <div class="content-container test-container">
+            <div class="section-header text-center mb-4">
+                <span class="section-kicker">Autoevaluación</span>
+                <h2 class="section-title">Test de estrés</h2>
+                <p class="section-subtitle">
+                    No es un diagnóstico, solo una guía para que puedas mirar cómo venís y sumar hábitos que te hagan
+                    bien.
+                </p>
+            </div>
 
-    <div class="stress-card" id="stressWizard">
-      <div class="stress-progress">
-        <span id="stressStepText">Pregunta 1 de 8</span>
-        <div class="stress-bar">
-          <div class="stress-bar-fill" id="stressBarFill"></div>
+            <div class="stress-card" id="stressWizard">
+                <div class="stress-progress">
+                    <span id="stressStepText">Pregunta 1 de 8</span>
+                    <div class="stress-bar">
+                        <div class="stress-bar-fill" id="stressBarFill"></div>
+                    </div>
+                </div>
+
+                <div class="stress-question-box">
+                    <p class="stress-question-text" id="stressQuestionText"></p>
+                    <div class="options" id="stressOptions"></div>
+                </div>
+
+                <div class="stress-nav">
+                    <button class="btn btn-outline-cta" type="button" id="stressPrevBtn" onclick="prevStressQuestion()"
+                        disabled>
+                        Anterior
+                    </button>
+                    <button class="btn btn-cta" type="button" id="stressNextBtn" onclick="nextStressQuestion()">
+                        Siguiente
+                    </button>
+                </div>
+            </div>
+
+            <div id="stressResult" class="stress-result" style="display:none;">
+                <h3 class="result-title"></h3>
+                <p class="result-score"></p>
+                <p class="result-text"></p>
+
+                <div class="stress-tips" id="stressTips"></div>
+
+                <p class="result-note">
+                    Si sentís que el estrés te supera o dura mucho tiempo, hablar con un profesional de salud mental
+                    siempre es una buena idea.
+                </p>
+            </div>
         </div>
-      </div>
-
-      <div class="stress-question-box">
-        <p class="stress-question-text" id="stressQuestionText"></p>
-        <div class="options" id="stressOptions"></div>
-      </div>
-
-      <div class="stress-nav">
-        <button class="btn btn-outline-cta" type="button" id="stressPrevBtn" onclick="prevStressQuestion()" disabled>
-          Anterior
-        </button>
-        <button class="btn btn-cta" type="button" id="stressNextBtn" onclick="nextStressQuestion()">
-          Siguiente
-        </button>
-      </div>
-    </div>
-
-    <div id="stressResult" class="stress-result" style="display:none;">
-      <h3 class="result-title"></h3>
-      <p class="result-score"></p>
-      <p class="result-text"></p>
-
-      <div class="stress-tips" id="stressTips"></div>
-
-      <p class="result-note">
-        Si sentís que el estrés te supera o dura mucho tiempo, hablar con un profesional de salud mental siempre es una buena idea.
-      </p>
-    </div>
-  </div>
-</section>
+    </section>
 
 
     <!-- Footer -->
@@ -226,4 +241,5 @@
 
     <script src="js/script.js"></script>
 </body>
+
 </html>
