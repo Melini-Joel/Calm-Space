@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Espacio Zen</title>
+    <link rel="stylesheet" href="css/zenZone.css">
+</head>
+<body>
+     <!-- Tu espacio zen -->
+    <section class="zen-space" id="zen">
+        <canvas id="zen-canvas" class="zen-animation"></canvas>
+        
+        <div class="content-container text-center zen-content">
+            <div class="section-header mb-4">
+                <span class="section-kicker section-kicker-zen">Pausa consciente</span>
+                <h2 class="section-title section-title-zen">Tu espacio zen</h2>
+            </div>
+
+            <p class="zen-quote" id="zenAffirmation">"Respirá hondo. Todo pasa."</p>
+            
+            <div class="zen-tabs">
+                <button class="zen-tab-btn active" onclick="switchZenView('audio')">🎵 Sonidos</button>
+                <button class="zen-tab-btn" onclick="switchZenView('timer')">⏱️ Meditación</button>
+                <button class="zen-tab-btn" onclick="switchZenView('affirmations')">✨ Affirmaciones</button>
+            </div>
+
+            <!-- Vista Sonidos -->
+            <div id="zen-audio" class="zen-view active">
+                <p class="zen-text">
+                    Elegí un sonido relajante, poné el celular a un lado y regalate unos minutos solo para vos.
+                </p>
+                <div class="sound-buttons">
+                    <button class="sound-btn" onclick="toggleSound('lluvia')">🌧️ Lluvia suave</button>
+                    <button class="sound-btn" onclick="toggleSound('olas')">🌊 Olas del mar</button>
+                    <button class="sound-btn" onclick="toggleSound('bosque')">🌲 Bosque</button>
+                    <button class="sound-btn sound-stop" onclick="toggleSound('parar')">⏸️ Detener</button>
+                </div>
+                <p class="zen-note">
+                    En una versión completa, estos botones reproducen sonidos reales para acompañar tu pausa.
+                </p>
+            </div>
+
+            <!-- Vista Temporizador -->
+            <div id="zen-timer" class="zen-view">
+                <p class="zen-text">Prepárate para una sesión de meditación guiada</p>
+                <div class="timer-container">
+                    <div class="timer-display" id="timerDisplay">
+                        <span class="timer-minutes">05</span>:<span class="timer-seconds">00</span>
+                    </div>
+                    <div class="timer-controls">
+                        <input type="number" id="timerMinutes" min="1" max="60" value="5" placeholder="Minutos" class="timer-input">
+                        <input type="number" id="timerSeconds" min="0" max="59" value="0" placeholder="Segundos" class="timer-input">
+                    </div>
+                    <div class="timer-buttons">
+                        <button class="sound-btn" onclick="startTimer()">▶️ Iniciar</button>
+                        <button class="sound-btn" onclick="pauseTimer()">⏸️ Pausar</button>
+                        <button class="sound-btn" onclick="resetTimer()">🔄 Reiniciar</button>
+                    </div>
+                </div>
+                <p class="zen-note">El temporizador te ayuda a mantener una sesión enfocada</p>
+            </div>
+
+            <!-- Vista Affirmaciones -->
+            <div id="zen-affirmations" class="zen-view">
+                <p class="zen-text">Mensajes positivos para tu bienestar</p>
+                <div class="affirmation-box" id="affirmationBox">
+                    <p class="affirmation-text" id="affirmationText">Haz clic para descubrir una affirmación</p>
+                </div>
+                <button class="sound-btn" onclick="getRandomAffirmation()">✨ Nueva affirmación</button>
+                <p class="zen-note">Dedica un momento a reflexionar en estas palabras</p>
+            </div>
+        </div>
+    </section>
+
+    <script src="js/zenZone.js"></script>
+</body>
+</html>

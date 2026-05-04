@@ -327,10 +327,33 @@ function toggleNav() {
     nav.classList.toggle('open');
 }
 
+// Dropdown menu - toggle en mobile
+document.addEventListener('DOMContentLoaded', () => {
+    const navDropdowns = document.querySelectorAll('.nav-dropdown-toggle');
+    
+    navDropdowns.forEach(toggle => {
+        toggle.addEventListener('click', (e) => {
+            // En desktop, el navegador maneja el hover
+            // En mobile, necesitamos toggle manual
+            if (window.innerWidth <= 768) {
+                e.preventDefault();
+                const dropdown = toggle.closest('.nav-dropdown');
+                dropdown.classList.toggle('open');
+            }
+        });
+    });
+});
+
 // Cerrar menú al hacer click en un enlace del nav (en mobile)
 document.querySelectorAll('#mainNav a').forEach(link => {
     link.addEventListener('click', () => {
         const nav = document.getElementById('mainNav');
         nav.classList.remove('open');
+        // Cerrar también todos los dropdowns
+        document.querySelectorAll('.nav-dropdown').forEach(dd => {
+            dd.classList.remove('open');
+        });
     });
 });
+
+

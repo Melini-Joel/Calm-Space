@@ -1,0 +1,353 @@
+html {
+    scrollbar-width: none;
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    height: 100%;
+}
+
+/* Espacio zen - Sendero Verde Hollow Knight */
+.zen-space {
+    background: linear-gradient(135deg, #0d1f1f 0%, #6767f4 35%, #220bc5 70%, #213b3d 100%);
+    background-attachment: fixed;
+    color: #c0f5c0;
+    padding: 20px;
+    text-align: center;
+    margin: 0;
+    position: relative;
+    overflow: auto;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.zen-quote {
+    font-size: 1.6rem;
+    font-style: italic;
+    margin-bottom: 0;
+    color: #b4fffe;
+    text-shadow: 0 0 10px rgba(74, 222, 128, 0.3);
+}
+
+.zen-text {
+    font-size: 0.98rem;
+    color: #edffed;
+    margin-bottom: 0;
+}
+
+.sound-buttons {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 0;
+}
+
+.sound-btn {
+    padding: 10px 22px;
+    font-size: 0.95rem;
+    border-radius: 999px;
+    border: 2px solid #62fbf8;
+    background: rgb(13 43 49 / 50%);
+    color: #dffcea;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-weight: 600;
+    text-shadow: 0 0 5px rgba(74, 222, 128, 0.2);
+}
+
+.sound-btn:hover {
+    background: rgba(74, 222, 128, 0.3);
+    color: #ffffff;
+    border-color: #10b981;
+    box-shadow: 0 0 15px rgba(74, 222, 128, 0.4);
+}
+
+.sound-btn.playing {
+    background: rgba(16, 185, 129, 0.5);
+    color: #ffffff;
+    border-color: #10b981;
+    box-shadow: 0 0 15px rgba(74, 222, 128, 0.5);
+}
+
+.sound-stop {
+    border-style: dashed;
+}
+
+.zen-note {
+    font-size: 0.85rem;
+    color: #86d9a0;
+    margin-top: 10px;
+}
+
+/* Canvas animación zen */
+.zen-animation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 1;
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.zen-content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.section-title-zen {
+    color: #c2f4d4;
+    ;
+    text-shadow: 0 0 10px rgba(74, 222, 128, 0.3);
+    font-size: 2.2rem;
+    margin: 0;
+    font-weight: 700;
+}
+
+.section-kicker-zen {
+    color: #90cbb7;
+    font-size: 0.95rem;
+}
+
+/* Tabs del zen-space */
+.zen-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin: 0;
+    flex-wrap: wrap;
+}
+
+.zen-tab-btn {
+    padding: 8px 18px;
+    border-radius: 999px;
+    border: 2px solid #62fbf8;
+    background: rgb(13 43 49 / 50%);
+    color: #dffcea;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 0.9rem;
+}
+
+.zen-tab-btn:hover {
+    background: rgba(74, 222, 128, 0.3);
+    color: #ffffff;
+    box-shadow: 0 0 10px rgba(74, 222, 128, 0.3);
+}
+
+.zen-tab-btn.active {
+    background: rgb(161 239 213 / 40%);
+    color: #ffffff;
+    border-color: #59e2e5;
+    box-shadow: 0 0 12px rgba(74, 222, 128, 0.4);
+}
+
+/* Vistas (tabs) */
+.zen-view {
+    display: none;
+    animation: fadeIn 0.3s ease;
+    width: 100%;
+}
+
+.zen-view.active {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* Temporizador */
+.timer-container {
+    background: rgb(63 93 93 / 49%);
+    border: 2px solid rgb(136 231 212 / 30%);
+    border-radius: 20px;
+    padding: 30px 20px;
+    margin: 0;
+    max-width: 400px;
+    box-shadow: 0 8px 24px rgba(74, 222, 128, 0.2), inset 0 0 20px rgba(74, 222, 128, 0.1);
+}
+
+.timer-display {
+    font-size: 4rem;
+    font-weight: 700;
+    color: #7eeaf0;
+    margin-bottom: 20px;
+    font-family: 'Courier New', monospace;
+    letter-spacing: 0.1em;
+    text-shadow: 0 0 15px rgba(74, 222, 128, 0.4);
+}
+
+.timer-minutes,
+.timer-seconds {
+    display: inline-block;
+    min-width: 1.2em;
+}
+
+.timer-controls {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.timer-input {
+    width: 80px;
+    padding: 8px 12px;
+    border: 2px solid rgb(93 215 210 / 40%);
+    border-radius: 8px;
+    font-size: 0.95rem;
+    text-align: center;
+    color: #81e5e5;
+    background: rgb(55 100 109 / 30%);
+}
+
+.timer-input:focus {
+    outline: none;
+    border-color: #10b981;
+    box-shadow: 0 0 8px rgba(74, 222, 128, 0.3);
+    background: rgba(13, 49, 13, 0.7);
+}
+
+.timer-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+/* Affirmations */
+.affirmation-box {
+    background: rgb(37 106 106 / 26%);
+    border: 2px solid rgb(113 209 193 / 30%);
+    border-radius: 20px;
+    padding: 30px 25px;
+    margin: 0;
+    max-width: 500px;
+    min-height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 24px rgba(74, 222, 128, 0.2), inset 0 0 20px rgba(74, 222, 128, 0.1);
+}
+
+.affirmation-text {
+    font-size: 1.2rem;
+    color: #94f8ee;
+    font-weight: 500;
+    font-style: italic;
+    line-height: 1.6;
+    text-shadow: 0 0 8px rgba(74, 222, 128, 0.3);
+}
+
+/* Botones de control */
+button {
+    padding: 10px 20px;
+    border: 2px solid #4ade80;
+    background: rgba(13, 49, 13, 0.6);
+    color: #4ade80;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    font-size: 0.95rem;
+}
+
+button:hover {
+    background: rgba(74, 222, 128, 0.2);
+    box-shadow: 0 0 10px rgba(74, 222, 128, 0.3);
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+/* Canvas - Animación de burbujas (hojas) */
+#zen-canvas {
+    display: block;
+    filter: drop-shadow(0 0 5px rgba(74, 222, 128, 0.2));
+}
+
+/* Audio elements */
+audio {
+    display: none;
+}
+
+/* Animación de brillo verdoso */
+@keyframes greenGlow {
+
+    0%,
+    100% {
+        background-position: 0 0;
+    }
+
+    50% {
+        background-position: 100px 100px;
+    }
+}
+
+.zen-space::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image:
+        radial-gradient(circle at 20% 30%, rgba(74, 222, 128, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(16, 185, 129, 0.08) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 1;
+    animation: greenGlow 8s ease-in-out infinite;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .zen-quote {
+        font-size: 1.3rem;
+    }
+
+    .section-title-zen {
+        font-size: 1.8rem;
+    }
+
+    .timer-display {
+        font-size: 3rem;
+    }
+
+    .timer-container {
+        max-width: 90%;
+    }
+
+    .affirmation-box {
+        max-width: 90%;
+        min-height: auto;
+        padding: 20px 15px;
+    }
+
+    .affirmation-text {
+        font-size: 1rem;
+    }
+}

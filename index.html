@@ -54,7 +54,14 @@
                 <a href="#inicio">Inicio</a>
                 <a href="#porque">¿Por qué?</a>
                 <a href="#tips">Tips</a>
-                <a href="#zen">Espacio zen</a>
+                <div class="nav-dropdown">
+                    <a href="zenZone.html" class="nav-dropdown-toggle">Espacio zen ></a>
+                    <div class="nav-dropdown-menu">
+                        <a href="#zen" onclick="switchZenView('audio')">🎵 Sonidos</a>
+                        <a href="#zen" onclick="switchZenView('timer')">⏱️ Meditación</a>
+                        <a href="#zen" onclick="switchZenView('affirmations')">✨ Affirmaciones</a>
+                    </div>
+                </div>
                 <a href="#test">Test de estrés</a>
             </nav>
         </div>
@@ -144,31 +151,7 @@
         </div>
     </section>
 
-    <!-- Tu espacio zen -->
-    <section class="zen-space" id="zen">
-        <div class="content-container text-center">
-            <div class="section-header mb-4">
-                <span class="section-kicker section-kicker-light">Pausa consciente</span>
-                <h2 class="section-title text-white">Tu espacio zen</h2>
-            </div>
-
-            <p class="zen-quote">"Respirá hondo. Todo pasa."</p>
-            <p class="zen-text">
-                Elegí un sonido relajante, poné el celular a un lado y regalate unos minutos solo para vos.
-            </p>
-
-            <div class="sound-buttons">
-                <button class="sound-btn" onclick="toggleSound('lluvia')">🌧️ Lluvia suave</button>
-                <button class="sound-btn" onclick="toggleSound('olas')">🌊 Olas del mar</button>
-                <button class="sound-btn" onclick="toggleSound('bosque')">🌲 Bosque</button>
-                <button class="sound-btn sound-stop" onclick="toggleSound('parar')">⏸️ Detener</button>
-            </div>
-
-            <p class="zen-note">
-                En una versión completa, estos botones reproducen sonidos reales para acompañar tu pausa.
-            </p>
-        </div>
-    </section>
+   
 
     <!-- Test (placeholder simple) -->
     <section class="section-white" id="test">
