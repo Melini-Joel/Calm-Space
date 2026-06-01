@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tests de Autoevaluacion | Calm-Space</title>
+  <meta name="description" content="Tests de estres, ansiedad y TDA/TDAH para conocerte mejor.">
+  <link rel="stylesheet" href="CSS/style.css">
+</head>
+<body>
+  <main class="tests-page">
+    <div class="tests-container">
+      <!-- Header -->
+      <div class="tests-header">
+        <a href="index.html" class="tests-back-link">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m12 19-7-7 7-7"></path>
+            <path d="M19 12H5"></path>
+          </svg>
+          Volver al inicio
+        </a>
+        <h1 class="tests-title">Tests de Autoevaluacion</h1>
+        <p class="tests-description">Estos tests no son un diagnostico, solo una guia para que puedas conocerte mejor y sumar habitos saludables.</p>
+      </div>
+
+      <!-- Test Selection -->
+      <div id="test-selection" class="tests-grid">
+        <button class="test-card stress" onclick="startTest('stress')">
+          <svg class="test-card-icon stress" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path>
+          </svg>
+          <h3 class="test-card-title">Test de Estres</h3>
+          <p class="test-card-description">Evalua tu nivel de estres actual y recibe consejos personalizados.</p>
+          <span class="test-card-cta">
+            Comenzar
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </span>
+        </button>
+
+        <button class="test-card anxiety" onclick="startTest('anxiety')">
+          <svg class="test-card-icon anxiety" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 4.44-1.54Z"></path>
+            <path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-4.44-1.54Z"></path>
+          </svg>
+          <h3 class="test-card-title">Test de Ansiedad</h3>
+          <p class="test-card-description">Identifica senales de ansiedad y aprende estrategias para manejarla.</p>
+          <span class="test-card-cta">
+            Comenzar
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </span>
+        </button>
+
+        <button class="test-card adhd" onclick="startTest('adhd')">
+          <svg class="test-card-icon adhd" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"></path>
+          </svg>
+          <h3 class="test-card-title">Test de TDA/TDAH</h3>
+          <p class="test-card-description">Explora senales de deficit de atencion e hiperactividad.</p>
+          <span class="test-card-cta">
+            Comenzar
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </span>
+        </button>
+      </div>
+
+      <!-- Test Progress -->
+      <div id="test-progress" class="test-progress-container hidden">
+        <div class="test-progress-header">
+          <span class="test-progress-label" id="progress-label">Pregunta 1 de 8</span>
+          <button class="test-reset-btn" onclick="resetTest()" title="Reiniciar test">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path>
+              <path d="M3 3v5h5"></path>
+            </svg>
+          </button>
+        </div>
+        <div class="test-progress-bar">
+          <div class="test-progress-fill" id="progress-fill" style="width: 0%"></div>
+        </div>
+
+        <div class="test-question">
+          <p class="test-question-text" id="question-text">Pregunta aqui</p>
+          <div class="test-options" id="test-options">
+            <!-- Options will be generated by JS -->
+          </div>
+        </div>
+
+        <div class="test-navigation">
+          <button class="test-nav-btn secondary" id="btn-prev" onclick="prevQuestion()" disabled>Anterior</button>
+          <button class="test-nav-btn primary" id="btn-next" onclick="nextQuestion()">Siguiente</button>
+        </div>
+      </div>
+
+      <!-- Test Results -->
+      <div id="test-results" class="test-results hidden">
+        <div class="test-results-header">
+          <h2 class="test-results-title" id="results-title">Resultado</h2>
+          <p class="test-results-score" id="results-score">Tu puntaje: 0 de 0</p>
+          <p class="test-results-description" id="results-description">Descripcion aqui</p>
+        </div>
+
+        <div class="test-results-tips" id="results-tips">
+          <!-- Tips will be generated by JS -->
+        </div>
+
+        <p class="test-results-note">
+          Si sentis que necesitas ayuda o estos sintomas persisten, hablar con un profesional de salud mental siempre es una buena idea.
+        </p>
+
+        <div class="test-results-actions">
+          <button class="test-nav-btn secondary" onclick="resetTest()">Hacer otro test</button>
+          <a href="zen.html" class="test-nav-btn primary">Ir al espacio zen</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="JS/tests.js"></script>
+</body>
+</html>

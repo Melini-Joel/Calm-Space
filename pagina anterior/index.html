@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calm-Space | Tu espacio de bienestar</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Google Font más profesional -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <!-- Hero -->
+    <section class="hero d-flex flex-column justify-content-center align-items-center text-center" id="inicio">
+        <div class="hero-overlay"></div>
+        <div class="breathing-circle"></div>
+
+        <div class="hero-content container">
+            <span class="hero-badge">Bienestar digital</span>
+            <h1>Calm-Space</h1>
+            <p>Tu pausa consciente para bajar el ritmo, respirar y volver a empezar.</p>
+            <button class="btn btn-cta mt-3" onclick="scrollToSection('porque')">
+                Empezar a relajarme
+            </button>
+        </div>
+    </section>
+
+    <!-- NAV-BAR -->
+    <header class="header-sticky" id="navbar">
+        <div class="nav-inner">
+            <div class="d-flex align-items-center gap-2">
+                <img src="img/logo.png" alt="Logo Calm-Space" class="logo-nav">
+                <span class="brand-name">Calm-Space</span>
+            </div>
+
+            <!-- Botón hamburguesa (solo se ve en mobile) -->
+            <button class="nav-toggle" type="button" aria-label="Abrir menú" onclick="toggleNav()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <!-- Menú normal / slide -->
+            <nav id="mainNav">
+                <a href="#inicio">Inicio</a>
+                <a href="#porque">¿Por qué?</a>
+                <a href="#tips">Tips</a>
+                <div class="nav-dropdown">
+                    <a href="zenZone.html" class="nav-dropdown-toggle">Espacio zen ></a>
+                    <div class="nav-dropdown-menu">
+                        <a href="#zen" onclick="switchZenView('audio')">🎵 Sonidos</a>
+                        <a href="#zen" onclick="switchZenView('timer')">⏱️ Meditación</a>
+                        <a href="#zen" onclick="switchZenView('affirmations')">✨ Affirmaciones</a>
+                    </div>
+                </div>
+                <a href="#test">Test de estrés</a>
+            </nav>
+        </div>
+
+    </header>
+
+    <!-- ¿Por qué necesito descansar? -->
+    <section class="section-white" id="porque">
+        <div class="content-container">
+            <div class="section-header text-center mb-4">
+                <span class="section-kicker">Escuchá a tu cuerpo</span>
+                <h2 class="section-title">¿Por qué necesito descansar?</h2>
+                <p class="section-subtitle">
+                    El estrés, las pantallas y la presión diaria afectan tu ánimo, tu foco y tu sueño.
+                    Hacer una pausa a tiempo es una forma de cuidarte.
+                </p>
+            </div>
+
+            <div class="reasons-grid">
+                <div class="reason-card">
+                    <div class="reason-icon">😴</div>
+                    <h3>Falta de descanso</h3>
+                    <p>
+                        El cansancio mental reduce tu energía, memoria y motivación. Dormir bien es parte de tu salud.
+                    </p>
+                </div>
+                <div class="reason-card">
+                    <div class="reason-icon">📱</div>
+                    <h3>Demasiado conectado</h3>
+                    <p>
+                        El uso constante de pantallas genera ansiedad y hace más difícil concentrarse en lo importante.
+                    </p>
+                </div>
+                <div class="reason-card">
+                    <div class="reason-icon">📚</div>
+                    <h3>Presión académica</h3>
+                    <p>
+                        Exigirte todo el tiempo te agota. Pausar unos minutos mejora tu rendimiento y tu bienestar.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tips para sentirte mejor -->
+    <section class="section-light" id="tips">
+        <div class="content-container">
+            <div class="section-header text-center mb-4">
+                <span class="section-kicker">Pequeños hábitos</span>
+                <h2 class="section-title">Tips para sentirte mejor</h2>
+                <p class="section-subtitle">
+                    No necesitás grandes cambios. Unos minutos al día pueden hacer la diferencia.
+                </p>
+            </div>
+
+            <div class="tips-container">
+                <div class="reason-card tip-card-soft">
+                    <h3>📵 Desconexión digital</h3>
+                    <p>Elegí 15 minutos sin pantallas. Dejá que tu mente descanse un rato.</p>
+                </div>
+                <div class="reason-card tip-card-soft">
+                    <h3>🎵 Música relajante</h3>
+                    <p>Escuchá sonidos suaves o música tranquila mientras respirás profundo.</p>
+                </div>
+                <div class="reason-card tip-card-soft">
+                    <h3>🚶 Pausa en movimiento</h3>
+                    <p>Una caminata corta al aire libre puede cambiar tu estado de ánimo.</p>
+                </div>
+                <div class="reason-card tip-card-link card">
+                    <h3>🧘 Respiración profunda</h3>
+                    <p>Probá 3 minutos de respiración guiada en tu espacio zen.</p>
+                </div>
+                <div class="reason-card tip-card-soft card">
+                    <h3>🎧 Meditación guiada</h3>
+                    <p>Reservá 5 minutos para estar presente y soltar preocupaciones.</p>
+                </div>
+            </div>
+
+            <div class="random-tip-section">
+                <button class="btn btn-outline-cta" onclick="generateRandomTip()">
+                    ✨ Generar tip aleatorio
+                </button>
+                <div class="random-tip-box" id="randomTip">
+                    <p class="random-tip-text">Hacé click para descubrir un consejo</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   
+
+    <!-- Test (placeholder simple) -->
+    <section class="section-white" id="test">
+        <div class="content-container test-container">
+            <div class="section-header text-center mb-4">
+                <span class="section-kicker">Autoevaluación</span>
+                <h2 class="section-title">Test de estrés</h2>
+                <p class="section-subtitle">
+                    No es un diagnóstico, solo una guía para que puedas mirar cómo venís y sumar hábitos que te hagan
+                    bien.
+                </p>
+            </div>
+
+            <div class="stress-card" id="stressWizard">
+                <div class="stress-progress">
+                    <span id="stressStepText">Pregunta 1 de 8</span>
+                    <div class="stress-bar">
+                        <div class="stress-bar-fill" id="stressBarFill"></div>
+                    </div>
+                </div>
+
+                <div class="stress-question-box">
+                    <p class="stress-question-text" id="stressQuestionText"></p>
+                    <div class="options" id="stressOptions"></div>
+                </div>
+
+                <div class="stress-nav">
+                    <button class="btn btn-outline-cta" type="button" id="stressPrevBtn" onclick="prevStressQuestion()"
+                        disabled>
+                        Anterior
+                    </button>
+                    <button class="btn btn-cta" type="button" id="stressNextBtn" onclick="nextStressQuestion()">
+                        Siguiente
+                    </button>
+                </div>
+            </div>
+
+            <div id="stressResult" class="stress-result" style="display:none;">
+                <h3 class="result-title"></h3>
+                <p class="result-score"></p>
+                <p class="result-text"></p>
+
+                <div class="stress-tips" id="stressTips"></div>
+
+                <p class="result-note">
+                    Si sentís que el estrés te supera o dura mucho tiempo, hablar con un profesional de salud mental
+                    siempre es una buena idea.
+                </p>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="content-container text-center">
+            <h2>Cuidar tu mente también es salud</h2>
+            <p>
+                Tomarte un momento para pausar, respirar y pedir ayuda cuando la necesitás
+                no es un lujo, es parte de cuidarte. Calm-Space está acá cada vez que
+                quieras volver a conectar con vos.
+            </p>
+        </div>
+    </footer>
+
+    <!-- Audios -->
+    <audio id="audio-lluvia" src="sounds/rain.wav"></audio>
+    <audio id="audio-olas" src="sounds/sea-waves.wav"></audio>
+    <audio id="audio-bosque" src="sounds/forest.wav"></audio>
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>

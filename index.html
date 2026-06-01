@@ -1,228 +1,239 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calm-Space | Tu espacio de bienestar</title>
-
-    <!-- Bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Google Font más profesional -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calm-Space | Tu pausa consciente</title>
+  <meta name="description" content="Tu pausa consciente para bajar el ritmo, respirar y volver a empezar.">
+  <link rel="stylesheet" href="CSS/style.css">
 </head>
-
 <body>
-    <!-- Hero -->
-    <section class="hero d-flex flex-column justify-content-center align-items-center text-center" id="inicio">
-        <div class="hero-overlay"></div>
-        <div class="breathing-circle"></div>
+  <!-- NAVBAR -->
+  <header class="navbar" id="navbar">
+    <div class="navbar-container">
+      <!-- Logo -->
+      <a href="index.html" class="navbar-logo">
+        <div class="navbar-logo-icon">CS</div>
+        <span class="navbar-logo-text">Calm-Space</span>
+      </a>
 
-        <div class="hero-content container">
-            <span class="hero-badge">Bienestar digital</span>
-            <h1>Calm-Space</h1>
-            <p>Tu pausa consciente para bajar el ritmo, respirar y volver a empezar.</p>
-            <button class="btn btn-cta mt-3" onclick="scrollToSection('porque')">
-                Empezar a relajarme
-            </button>
+      <!-- Mobile Menu Button -->
+      <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Abrir menu">
+        <svg id="menu-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+        <svg id="close-icon" class="hidden" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+
+      <!-- Desktop Navigation -->
+      <nav class="navbar-nav">
+        <a href="#inicio" class="nav-link">Inicio</a>
+        <a href="#porque" class="nav-link">Por que?</a>
+        <a href="#tips" class="nav-link">Tips</a>
+        
+        <!-- Zen Dropdown -->
+        <div class="nav-dropdown">
+          <a href="zen.html" class="nav-link nav-dropdown-trigger">
+            Espacio Zen
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </a>
+          <div class="nav-dropdown-menu">
+            <a href="zen.html?tab=audio" class="nav-dropdown-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 18V5l12-2v13"></path>
+                <circle cx="6" cy="18" r="3"></circle>
+                <circle cx="18" cy="16" r="3"></circle>
+              </svg>
+              Sonidos
+            </a>
+            <a href="zen.html?tab=timer" class="nav-dropdown-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+              Meditacion
+            </a>
+            <a href="zen.html?tab=affirmations" class="nav-dropdown-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"></path>
+              </svg>
+              Afirmaciones
+            </a>
+          </div>
         </div>
-    </section>
 
-    <!-- NAV-BAR -->
-    <header class="header-sticky" id="navbar">
-        <div class="nav-inner">
-            <div class="d-flex align-items-center gap-2">
-                <img src="img/logo.png" alt="Logo Calm-Space" class="logo-nav">
-                <span class="brand-name">Calm-Space</span>
-            </div>
+        <a href="tests.html" class="nav-link" style="display: flex; align-items: center; gap: 0.25rem;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="5" width="6" height="6" rx="1"></rect>
+            <path d="m3 17 2 2 4-4"></path>
+            <path d="M13 6h8"></path>
+            <path d="M13 12h8"></path>
+            <path d="M13 18h8"></path>
+          </svg>
+          Tests
+        </a>
+      </nav>
 
-            <!-- Botón hamburguesa (solo se ve en mobile) -->
-            <button class="nav-toggle" type="button" aria-label="Abrir menú" onclick="toggleNav()">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-
-            <!-- Menú normal / slide -->
-            <nav id="mainNav">
-                <a href="#inicio">Inicio</a>
-                <a href="#porque">¿Por qué?</a>
-                <a href="#tips">Tips</a>
-                <div class="nav-dropdown">
-                    <a href="zenZone.html" class="nav-dropdown-toggle">Espacio zen ></a>
-                    <div class="nav-dropdown-menu">
-                        <a href="#zen" onclick="switchZenView('audio')">🎵 Sonidos</a>
-                        <a href="#zen" onclick="switchZenView('timer')">⏱️ Meditación</a>
-                        <a href="#zen" onclick="switchZenView('affirmations')">✨ Affirmaciones</a>
-                    </div>
-                </div>
-                <a href="#test">Test de estrés</a>
-            </nav>
+      <!-- Mobile Navigation -->
+      <nav class="mobile-nav" id="mobile-nav">
+        <a href="#inicio" class="mobile-nav-link" onclick="closeMobileMenu()">Inicio</a>
+        <a href="#porque" class="mobile-nav-link" onclick="closeMobileMenu()">Por que?</a>
+        <a href="#tips" class="mobile-nav-link" onclick="closeMobileMenu()">Tips</a>
+        
+        <!-- Mobile Zen Dropdown -->
+        <div>
+          <button class="mobile-nav-link" style="width: 100%; display: flex; align-items: center; justify-content: space-between;" onclick="toggleMobileZenDropdown()">
+            Espacio Zen
+            <svg id="mobile-zen-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="transition: transform 0.2s;">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </button>
+          <div class="mobile-dropdown-content" id="mobile-zen-dropdown">
+            <a href="zen.html?tab=audio" class="mobile-dropdown-item" onclick="closeMobileMenu()">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 18V5l12-2v13"></path>
+                <circle cx="6" cy="18" r="3"></circle>
+                <circle cx="18" cy="16" r="3"></circle>
+              </svg>
+              Sonidos
+            </a>
+            <a href="zen.html?tab=timer" class="mobile-dropdown-item" onclick="closeMobileMenu()">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+              Meditacion
+            </a>
+            <a href="zen.html?tab=affirmations" class="mobile-dropdown-item" onclick="closeMobileMenu()">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"></path>
+              </svg>
+              Afirmaciones
+            </a>
+          </div>
         </div>
 
-    </header>
+        <a href="tests.html" class="mobile-nav-link" style="display: flex; align-items: center; gap: 0.5rem;" onclick="closeMobileMenu()">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="5" width="6" height="6" rx="1"></rect>
+            <path d="m3 17 2 2 4-4"></path>
+            <path d="M13 6h8"></path>
+            <path d="M13 12h8"></path>
+            <path d="M13 18h8"></path>
+          </svg>
+          Tests
+        </a>
+      </nav>
+    </div>
+  </header>
 
-    <!-- ¿Por qué necesito descansar? -->
-    <section class="section-white" id="porque">
-        <div class="content-container">
-            <div class="section-header text-center mb-4">
-                <span class="section-kicker">Escuchá a tu cuerpo</span>
-                <h2 class="section-title">¿Por qué necesito descansar?</h2>
-                <p class="section-subtitle">
-                    El estrés, las pantallas y la presión diaria afectan tu ánimo, tu foco y tu sueño.
-                    Hacer una pausa a tiempo es una forma de cuidarte.
-                </p>
-            </div>
+  <!-- HERO SECTION -->
+  <section id="inicio" class="hero">
+    <div class="hero-overlay"></div>
+    <div class="breathing-circle"></div>
+    <div class="hero-content">
+      <span class="hero-badge">Bienestar digital</span>
+      <h1 class="hero-title">Calm-Space</h1>
+      <p class="hero-description">Tu pausa consciente para bajar el ritmo, respirar y volver a empezar.</p>
+      <a href="#porque" class="hero-btn">Empezar a relajarme</a>
+    </div>
+  </section>
 
-            <div class="reasons-grid">
-                <div class="reason-card">
-                    <div class="reason-icon">😴</div>
-                    <h3>Falta de descanso</h3>
-                    <p>
-                        El cansancio mental reduce tu energía, memoria y motivación. Dormir bien es parte de tu salud.
-                    </p>
-                </div>
-                <div class="reason-card">
-                    <div class="reason-icon">📱</div>
-                    <h3>Demasiado conectado</h3>
-                    <p>
-                        El uso constante de pantallas genera ansiedad y hace más difícil concentrarse en lo importante.
-                    </p>
-                </div>
-                <div class="reason-card">
-                    <div class="reason-icon">📚</div>
-                    <h3>Presión académica</h3>
-                    <p>
-                        Exigirte todo el tiempo te agota. Pausar unos minutos mejora tu rendimiento y tu bienestar.
-                    </p>
-                </div>
-            </div>
+  <!-- WHY SECTION -->
+  <section id="porque" class="why-section">
+    <div class="why-container">
+      <div class="section-header">
+        <span class="section-label">Escucha a tu cuerpo</span>
+        <h2 class="section-title">Por que necesito descansar?</h2>
+        <p class="section-description">El estres, las pantallas y la presion diaria afectan tu animo, tu foco y tu sueno. Hacer una pausa a tiempo es una forma de cuidarte.</p>
+      </div>
+
+      <div class="reasons-grid">
+        <div class="reason-card">
+          <div class="reason-emoji">😴</div>
+          <h3 class="reason-title">Falta de descanso</h3>
+          <p class="reason-description">El cansancio mental reduce tu energia, memoria y motivacion. Dormir bien es parte de tu salud.</p>
         </div>
-    </section>
-
-    <!-- Tips para sentirte mejor -->
-    <section class="section-light" id="tips">
-        <div class="content-container">
-            <div class="section-header text-center mb-4">
-                <span class="section-kicker">Pequeños hábitos</span>
-                <h2 class="section-title">Tips para sentirte mejor</h2>
-                <p class="section-subtitle">
-                    No necesitás grandes cambios. Unos minutos al día pueden hacer la diferencia.
-                </p>
-            </div>
-
-            <div class="tips-container">
-                <div class="reason-card tip-card-soft">
-                    <h3>📵 Desconexión digital</h3>
-                    <p>Elegí 15 minutos sin pantallas. Dejá que tu mente descanse un rato.</p>
-                </div>
-                <div class="reason-card tip-card-soft">
-                    <h3>🎵 Música relajante</h3>
-                    <p>Escuchá sonidos suaves o música tranquila mientras respirás profundo.</p>
-                </div>
-                <div class="reason-card tip-card-soft">
-                    <h3>🚶 Pausa en movimiento</h3>
-                    <p>Una caminata corta al aire libre puede cambiar tu estado de ánimo.</p>
-                </div>
-                <div class="reason-card tip-card-link card">
-                    <h3>🧘 Respiración profunda</h3>
-                    <p>Probá 3 minutos de respiración guiada en tu espacio zen.</p>
-                </div>
-                <div class="reason-card tip-card-soft card">
-                    <h3>🎧 Meditación guiada</h3>
-                    <p>Reservá 5 minutos para estar presente y soltar preocupaciones.</p>
-                </div>
-            </div>
-
-            <div class="random-tip-section">
-                <button class="btn btn-outline-cta" onclick="generateRandomTip()">
-                    ✨ Generar tip aleatorio
-                </button>
-                <div class="random-tip-box" id="randomTip">
-                    <p class="random-tip-text">Hacé click para descubrir un consejo</p>
-                </div>
-            </div>
+        <div class="reason-card">
+          <div class="reason-emoji">📱</div>
+          <h3 class="reason-title">Demasiado conectado</h3>
+          <p class="reason-description">El uso constante de pantallas genera ansiedad y hace mas dificil concentrarse en lo importante.</p>
         </div>
-    </section>
-
-   
-
-    <!-- Test (placeholder simple) -->
-    <section class="section-white" id="test">
-        <div class="content-container test-container">
-            <div class="section-header text-center mb-4">
-                <span class="section-kicker">Autoevaluación</span>
-                <h2 class="section-title">Test de estrés</h2>
-                <p class="section-subtitle">
-                    No es un diagnóstico, solo una guía para que puedas mirar cómo venís y sumar hábitos que te hagan
-                    bien.
-                </p>
-            </div>
-
-            <div class="stress-card" id="stressWizard">
-                <div class="stress-progress">
-                    <span id="stressStepText">Pregunta 1 de 8</span>
-                    <div class="stress-bar">
-                        <div class="stress-bar-fill" id="stressBarFill"></div>
-                    </div>
-                </div>
-
-                <div class="stress-question-box">
-                    <p class="stress-question-text" id="stressQuestionText"></p>
-                    <div class="options" id="stressOptions"></div>
-                </div>
-
-                <div class="stress-nav">
-                    <button class="btn btn-outline-cta" type="button" id="stressPrevBtn" onclick="prevStressQuestion()"
-                        disabled>
-                        Anterior
-                    </button>
-                    <button class="btn btn-cta" type="button" id="stressNextBtn" onclick="nextStressQuestion()">
-                        Siguiente
-                    </button>
-                </div>
-            </div>
-
-            <div id="stressResult" class="stress-result" style="display:none;">
-                <h3 class="result-title"></h3>
-                <p class="result-score"></p>
-                <p class="result-text"></p>
-
-                <div class="stress-tips" id="stressTips"></div>
-
-                <p class="result-note">
-                    Si sentís que el estrés te supera o dura mucho tiempo, hablar con un profesional de salud mental
-                    siempre es una buena idea.
-                </p>
-            </div>
+        <div class="reason-card">
+          <div class="reason-emoji">📚</div>
+          <h3 class="reason-title">Presion academica</h3>
+          <p class="reason-description">Exigirte todo el tiempo te agota. Pausar unos minutos mejora tu rendimiento y tu bienestar.</p>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
+  <!-- TIPS SECTION -->
+  <section id="tips" class="tips-section">
+    <div class="tips-container">
+      <div class="section-header">
+        <span class="section-label">Pequenos habitos</span>
+        <h2 class="section-title">Tips para sentirte mejor</h2>
+        <p class="section-description">No necesitas grandes cambios. Unos minutos al dia pueden hacer la diferencia.</p>
+      </div>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="content-container text-center">
-            <h2>Cuidar tu mente también es salud</h2>
-            <p>
-                Tomarte un momento para pausar, respirar y pedir ayuda cuando la necesitás
-                no es un lujo, es parte de cuidarte. Calm-Space está acá cada vez que
-                quieras volver a conectar con vos.
-            </p>
+      <div class="tips-grid">
+        <div class="tip-card">
+          <h3 class="tip-title">📵 Desconexion digital</h3>
+          <p class="tip-description">Elegi 15 minutos sin pantallas. Deja que tu mente descanse un rato.</p>
         </div>
-    </footer>
+        <div class="tip-card">
+          <h3 class="tip-title">🎵 Musica relajante</h3>
+          <p class="tip-description">Escucha sonidos suaves o musica tranquila mientras respiras profundo.</p>
+        </div>
+        <div class="tip-card">
+          <h3 class="tip-title">🚶 Pausa en movimiento</h3>
+          <p class="tip-description">Una caminata corta al aire libre puede cambiar tu estado de animo.</p>
+        </div>
+        <div class="tip-card">
+          <h3 class="tip-title">🧘 Respiracion profunda</h3>
+          <p class="tip-description">Proba 3 minutos de respiracion guiada en tu espacio zen.</p>
+        </div>
+        <div class="tip-card">
+          <h3 class="tip-title">🎧 Meditacion guiada</h3>
+          <p class="tip-description">Reserva 5 minutos para estar presente y soltar preocupaciones.</p>
+        </div>
+      </div>
 
-    <!-- Audios -->
-    <audio id="audio-lluvia" src="sounds/rain.wav"></audio>
-    <audio id="audio-olas" src="sounds/sea-waves.wav"></audio>
-    <audio id="audio-bosque" src="sounds/forest.wav"></audio>
+      <!-- Random Tip -->
+      <div class="random-tip-section">
+        <button class="random-tip-btn" onclick="generateRandomTip()">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"></path>
+          </svg>
+          Generar tip aleatorio
+        </button>
+        <div class="random-tip-display">
+          <p class="random-tip-text" id="random-tip-text">Hace click para descubrir un consejo</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <script src="js/script.js"></script>
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-container">
+      <h2 class="footer-title">Cuidar tu mente tambien es salud</h2>
+      <p class="footer-text">
+        Tomarte un momento para pausar, respirar y pedir ayuda cuando la necesitas
+        no es un lujo, es parte de cuidarte. Calm-Space esta aca cada vez que
+        quieras volver a conectar con vos.
+      </p>
+    </div>
+  </footer>
+
+  <script src="JS/script.js"></script>
 </body>
-
 </html>
