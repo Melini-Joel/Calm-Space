@@ -296,7 +296,7 @@ button {
    ============================================ */
 
 .hero {
-  min-height: 120vh;
+  min-height: 100vh;
   position: relative;
   top: -68px;
   display: flex;
@@ -304,7 +304,7 @@ button {
   justify-content: center;
   align-items: center;
   text-align: center;
-  padding: 2rem 1rem;
+  padding: 4rem 1rem 3rem;
   background: linear-gradient(135deg, #5f77f1 0%, #764ba2 100%);
 }
 
