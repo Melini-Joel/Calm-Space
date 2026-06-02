@@ -26,11 +26,94 @@ const affirmations = [
   "Estoy exactamente donde necesito estar.",
 ];
 
+// Mood recommendations
+const moodRecommendations = {
+  stress: {
+    sounds: ["lluvia", "bosque"],
+    affirmation: "Soy capaz de manejar lo que viene.",
+    tips: [
+      "Respira profundamente 5 veces",
+      "Escucha la lluvia o el bosque",
+      "Medita por 5 minutos",
+      "Estira tu cuerpo suavemente"
+    ]
+  },
+  anxiety: {
+    sounds: ["olas"],
+    affirmation: "Estoy a salvo en este momento.",
+    tips: [
+      "Escucha el sonido relajante de las olas",
+      "Practica respiracion profunda",
+      "Repite una afirmacion positiva",
+      "Medita por 10 minutos"
+    ]
+  },
+  tired: {
+    sounds: ["lluvia"],
+    affirmation: "Mi cuerpo se relaja completamente.",
+    tips: [
+      "Descansa tus ojos",
+      "Escucha lluvia suave",
+      "Respira profundamente",
+      "Toma agua y relájate"
+    ]
+  },
+  calm: {
+    sounds: ["bosque", "olas"],
+    affirmation: "La calma es mi estado natural.",
+    tips: [
+      "Mantén esta sensacion de paz",
+      "Disfruta del sonido elegido",
+      "Reflexiona sobre tu bienestar",
+      "Sigue con tu dia con calma"
+    ]
+  }
+};
+
+// ============================================
+// DARK MODE SUPPORT
+// ============================================
+
+function initDarkModeZen() {
+  const isDarkMode = localStorage.getItem('darkMode') === 'true';
+  if (isDarkMode) {
+    document.body.classList.add('dark-mode');
+  }
+}
+
+// ============================================
+// LOCAL STORAGE
+// ============================================
+
+function savePreferences() {
+  localStorage.setItem('zenTab', currentTab);
+  localStorage.setItem('zenMood', currentMood || '');
+  localStorage.setItem('zenVolume', currentVolume);
+  localStorage.setItem('zenLastAffirmation', lastAffirmation);
+}
+
+function loadPreferences() {
+  const savedTab = localStorage.getItem('zenTab');
+  const savedMood = localStorage.getItem('zenMood');
+  const savedVolume = localStorage.getItem('zenVolume');
+  const savedAffirmation = localStorage.getItem('zenLastAffirmation');
+  
+  if (savedVolume) {
+    currentVolume = parseInt(savedVolume);
+    const volumeSlider = document.getElementById('volume-slider');
+    if (volumeSlider) {
+      volumeSlider.value = currentVolume;
+      updateVolumeDisplay();
+    }
+  }
+}
+
 // ============================================
 // TAB SWITCHING
 // ============================================
 
 let currentTab = "audio";
+let currentMood = null;
 
 function switchTab(tabId) {
   currentTab = tabId;
@@ -48,13 +131,15 @@ function switchTab(tabId) {
     view.classList.remove("active");
   });
   document.getElementById(`view-${tabId}`).classList.add("active");
+  
+  savePreferences();
 }
 
 // Check URL params for initial tab
 function checkUrlParams() {
   const urlParams = new URLSearchParams(window.location.search);
   const tabParam = urlParams.get("tab");
-  if (tabParam && ["audio", "timer", "affirmations"].includes(tabParam)) {
+  if (tabParam && ["audio", "breathing", "mood", "timer", "affirmations"].includes(tabParam)) {
     switchTab(tabParam);
   }
 }
@@ -64,10 +149,21 @@ function checkUrlParams() {
 // ============================================
 
 let currentSound = null;
+let currentVolume = 70;
+let audioElement = null;
+let lastAffirmation = '';
+
+// Mock audio URLs - En producción, estos serían archivos reales
+const audioUrls = {
+  lluvia: 'data:audio/wav;base64,UklGRiYAAABXQVZFZm10IBAAAAABAAEAQB8AAAB9AAACABAAZGF0YQIAAAAAAA==',
+  olas: 'data:audio/wav;base64,UklGRiYAAABXQVZFZm10IBAAAAABAAEAQB8AAAB9AAACABAAZGF0YQIAAAAAAA==',
+  bosque: 'data:audio/wav;base64,UklGRiYAAABXQVZFZm10IBAAAAABAAEAQB8AAAB9AAACABAAZGF0YQIAAAAAAA=='
+};
 
 function toggleSound(sound) {
   const buttons = ["lluvia", "olas", "bosque"];
   const statusEl = document.getElementById("sound-status");
+  const audioControls = document.getElementById("audio-controls");
   
   buttons.forEach((btn) => {
     document.getElementById(`btn-${btn}`).classList.remove("active");
@@ -75,12 +171,38 @@ function toggleSound(sound) {
   
   if (currentSound === sound) {
     currentSound = null;
+    if (audioElement) {
+      audioElement.pause();
+      audioElement = null;
+    }
     statusEl.textContent = "Selecciona un sonido para comenzar";
+    audioControls.style.display = "none";
   } else {
     currentSound = sound;
     document.getElementById(`btn-${sound}`).classList.add("active");
     statusEl.textContent = `Reproduciendo: ${sound}`;
+    audioControls.style.display = "block";
+    
+    // Play audio
+    playAudio(sound);
   }
+  
+  savePreferences();
+}
+
+function playAudio(sound) {
+  if (audioElement) {
+    audioElement.pause();
+  }
+  
+  // En una aplicación real, aquí cargarías archivos de audio reales
+  audioElement = new Audio(audioUrls[sound] || '');
+  audioElement.loop = true;
+  audioElement.volume = currentVolume / 100;
+  audioElement.play().catch(() => {
+    // Fallback si el audio no se puede reproducir
+    console.log(`Sonido ${sound} en reproducción (simulado)`);
+  });
 }
 
 function stopSound() {
@@ -88,8 +210,107 @@ function stopSound() {
   buttons.forEach((btn) => {
     document.getElementById(`btn-${btn}`).classList.remove("active");
   });
+  
+  if (audioElement) {
+    audioElement.pause();
+    audioElement = null;
+  }
+  
   currentSound = null;
   document.getElementById("sound-status").textContent = "Selecciona un sonido para comenzar";
+  document.getElementById("audio-controls").style.display = "none";
+}
+
+// Audio controls
+function updateVolumeDisplay() {
+  const volumeSlider = document.getElementById('volume-slider');
+  const volumeValue = document.getElementById('volume-value');
+  
+  if (volumeSlider) {
+    currentVolume = parseInt(volumeSlider.value);
+    volumeValue.textContent = currentVolume + '%';
+    
+    if (audioElement) {
+      audioElement.volume = currentVolume / 100;
+    }
+    
+    savePreferences();
+  }
+}
+
+// ============================================
+// BREATHING EXERCISE
+// ============================================
+
+let isBreathing = false;
+const breathingPhases = [
+  { text: "Inhala", duration: 4000 },
+  { text: "Retén", duration: 4000 },
+  { text: "Exhala", duration: 4000 },
+  { text: "Espera", duration: 2000 }
+];
+let currentPhaseIndex = 0;
+
+function toggleBreathing() {
+  isBreathing = !isBreathing;
+  const btn = document.querySelector('#view-breathing .zen-btn');
+  const btnText = document.getElementById('breathing-btn-text');
+  
+  if (isBreathing) {
+    btnText.textContent = 'Detener';
+    startBreathingCycle();
+  } else {
+    btnText.textContent = 'Iniciar';
+    currentPhaseIndex = 0;
+  }
+}
+
+function startBreathingCycle() {
+  if (!isBreathing) return;
+  
+  const phase = breathingPhases[currentPhaseIndex];
+  const breathingText = document.getElementById('breathing-text');
+  breathingText.textContent = phase.text;
+  
+  currentPhaseIndex = (currentPhaseIndex + 1) % breathingPhases.length;
+  setTimeout(startBreathingCycle, phase.duration);
+}
+
+// ============================================
+// MOOD SELECTOR & RECOMMENDATIONS
+// ============================================
+
+function setMood(mood) {
+  currentMood = mood;
+  
+  // Update button states
+  document.querySelectorAll('.mood-btn').forEach(btn => {
+    btn.classList.remove('selected');
+  });
+  event.target.classList.add('selected');
+  
+  // Show recommendations
+  showRecommendations(mood);
+  
+  // Auto-set affirmation
+  const recommendedAffirmation = moodRecommendations[mood].affirmation;
+  document.getElementById('affirmation-text').textContent = recommendedAffirmation;
+  document.getElementById('header-affirmation').textContent = `"${recommendedAffirmation}"`;
+  lastAffirmation = recommendedAffirmation;
+  
+  savePreferences();
+}
+
+function showRecommendations(mood) {
+  const recommendations = moodRecommendations[mood];
+  const recommendationsList = document.getElementById('recommendations-list');
+  
+  recommendationsList.innerHTML = '';
+  recommendations.tips.forEach(tip => {
+    const li = document.createElement('li');
+    li.textContent = tip;
+    recommendationsList.appendChild(li);
+  });
 }
 
 // ============================================
@@ -156,9 +377,12 @@ function resetTimer() {
 function getRandomAffirmation() {
   const randomIndex = Math.floor(Math.random() * affirmations.length);
   const affirmation = affirmations[randomIndex];
+  lastAffirmation = affirmation;
   
   document.getElementById("affirmation-text").textContent = affirmation;
   document.getElementById("header-affirmation").textContent = `"${affirmation}"`;
+  
+  savePreferences();
 }
 
 // ============================================
@@ -233,7 +457,15 @@ function initCanvas() {
 // ============================================
 
 document.addEventListener("DOMContentLoaded", function () {
+  initDarkModeZen();
   checkUrlParams();
   initCanvas();
   updateTimerDisplay();
+  loadPreferences();
+  
+  // Volume control
+  const volumeSlider = document.getElementById('volume-slider');
+  if (volumeSlider) {
+    volumeSlider.addEventListener('input', updateVolumeDisplay);
+  }
 });

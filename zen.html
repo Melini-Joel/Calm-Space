@@ -39,6 +39,21 @@
           </svg>
           Sonidos
         </button>
+        <button class="zen-tab" data-tab="breathing" onclick="switchTab('breathing')">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"></path>
+          </svg>
+          Respiración
+        </button>
+        <button class="zen-tab" data-tab="mood" onclick="switchTab('mood')">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <path d="M8 14s1.5 2 4 2 4-2 4-2"></path>
+            <line x1="9" y1="9" x2="9.01" y2="9"></line>
+            <line x1="15" y1="9" x2="15.01" y2="9"></line>
+          </svg>
+          Ánimo
+        </button>
         <button class="zen-tab" data-tab="timer" onclick="switchTab('timer')">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="12" cy="12" r="10"></circle>
@@ -95,7 +110,60 @@
             Detener
           </button>
         </div>
+        <div class="audio-controls" id="audio-controls" style="display: none;">
+          <div class="audio-control-group">
+            <label class="audio-control-label">Volumen:</label>
+            <input type="range" id="volume-slider" class="audio-slider" min="0" max="100" value="70">
+            <span class="audio-value" id="volume-value">70%</span>
+          </div>
+          <div class="audio-control-group">
+            <label class="audio-control-label">Progreso:</label>
+            <div style="flex: 1;">
+              <div class="progress-bar">
+                <div class="progress-fill" id="progress-fill" style="width: 0%"></div>
+              </div>
+              <div class="time-display" id="time-display">0:00 / 0:00</div>
+            </div>
+          </div>
+        </div>
         <p class="zen-status" id="sound-status">Selecciona un sonido para comenzar</p>
+      </div>
+
+      <!-- Breathing View -->
+      <div class="zen-view" id="view-breathing">
+        <p class="zen-view-description">Respira profundamente. Sigue el ritmo del círculo.</p>
+        <div class="breathing-container">
+          <div class="breathing-circle" id="breathing-circle">
+            <span class="breathing-text" id="breathing-text">Inhala</span>
+          </div>
+          <button class="zen-btn" onclick="toggleBreathing()">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="6 3 20 12 6 21 6 3"></polygon>
+            </svg>
+            <span id="breathing-btn-text">Iniciar</span>
+          </button>
+        </div>
+        <p class="zen-status">La respiración profunda reduce el estrés en segundos</p>
+      </div>
+
+      <!-- Mood View -->
+      <div class="zen-view" id="view-mood">
+        <p class="zen-view-description">¿Cómo te sientes? Selecciona tu ánimo actual.</p>
+        <div class="mood-selector-container">
+          <label class="mood-selector-label">Mi ánimo ahora:</label>
+          <div class="mood-buttons">
+            <button class="mood-btn" onclick="setMood('stress')">😰 Estrés</button>
+            <button class="mood-btn" onclick="setMood('anxiety')">😟 Ansiedad</button>
+            <button class="mood-btn" onclick="setMood('tired')">😴 Cansado</button>
+            <button class="mood-btn" onclick="setMood('calm')">😌 Tranquilo</button>
+          </div>
+        </div>
+        <div class="recommendations-container">
+          <div class="recommendations-title">Recomendaciones para ti:</div>
+          <ul class="recommendations-list" id="recommendations-list">
+            <li>Selecciona tu ánimo para ver recomendaciones</li>
+          </ul>
+        </div>
       </div>
 
       <!-- Timer View -->
@@ -135,7 +203,7 @@
 
       <!-- Affirmations View -->
       <div class="zen-view" id="view-affirmations">
-        <p class="zen-view-description">Mensajes positivos para tu bienestar</p>
+        <p class="zen-view-description">Las afirmaciones son buenas para el bienestar, al escuchar una afirmación nuestro cerebro interpreta algo positivo</p>
         <div class="affirmation-box">
           <p class="affirmation-text" id="affirmation-text">Estoy en paz conmigo mismo.</p>
         </div>

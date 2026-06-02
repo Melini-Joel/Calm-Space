@@ -17,6 +17,71 @@ const randomTips = [
 ];
 
 // ============================================
+// DARK MODE
+// ============================================
+
+function initDarkMode() {
+  const isDarkMode = localStorage.getItem('darkMode') === 'true';
+  const themeToggle = document.getElementById('theme-toggle');
+  
+  if (isDarkMode) {
+    document.body.classList.add('dark-mode');
+    updateThemeToggleIcons(true);
+  }
+  
+  themeToggle.addEventListener('click', toggleDarkMode);
+}
+
+function toggleDarkMode() {
+  const isDarkMode = document.body.classList.toggle('dark-mode');
+  localStorage.setItem('darkMode', isDarkMode);
+  updateThemeToggleIcons(isDarkMode);
+}
+
+function updateThemeToggleIcons(isDarkMode) {
+  const sunIcon = document.getElementById('sun-icon');
+  const moonIcon = document.getElementById('moon-icon');
+  
+  if (isDarkMode) {
+    sunIcon.classList.add('hidden');
+    moonIcon.classList.remove('hidden');
+  } else {
+    sunIcon.classList.remove('hidden');
+    moonIcon.classList.add('hidden');
+  }
+}
+
+// ============================================
+// TIME-BASED GREETINGS
+// ============================================
+
+function setTimeBasedGreeting() {
+  const hour = new Date().getHours();
+  const greetingEl = document.getElementById('time-greeting');
+  const descriptionEl = document.getElementById('hero-description');
+  
+  let greeting = '';
+  let description = '';
+  
+  if (hour >= 5 && hour < 12) {
+    greeting = '🌅 Buenos días';
+    description = 'Comienza tu día con calma. Una pausa consciente te ayudará a enfocar.';
+  } else if (hour >= 12 && hour < 17) {
+    greeting = '☀️ Buenas tardes';
+    description = 'Es momento de recargar energía. Tómate unos minutos para ti.';
+  } else if (hour >= 17 && hour < 21) {
+    greeting = '🌆 Buenas noches';
+    description = 'Relájate antes de terminar el día. Respira profundo.';
+  } else {
+    greeting = '🌙 Buenas madrugadas';
+    description = 'La tranquilidad de la noche es perfecta para meditar.';
+  }
+  
+  greetingEl.textContent = greeting;
+  descriptionEl.textContent = description;
+}
+
+// ============================================
 // NAVBAR
 // ============================================
 
@@ -87,3 +152,12 @@ function generateRandomTip() {
   const tipText = document.getElementById("random-tip-text");
   tipText.textContent = randomTips[randomIndex];
 }
+
+// ============================================
+// INITIALIZATION
+// ============================================
+
+document.addEventListener("DOMContentLoaded", function () {
+  initDarkMode();
+  setTimeBasedGreeting();
+});
